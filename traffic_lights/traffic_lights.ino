@@ -1,3 +1,6 @@
+#include <Servo.h>
+Servo myservo;
+int pos = 20;
 int microaccess = 9;
 int stationLed = 3;
 int redLed = 8;
@@ -10,13 +13,14 @@ long duration;
 float distance;
 
 void setup() {
+myservo.attach(11);
 pinMode(microaccess, OUTPUT);
 pinMode(stationLed, OUTPUT);
 pinMode(redLed, OUTPUT);
 pinMode(yellowLed, OUTPUT); 
 pinMode(trigPin, OUTPUT);
 pinMode(echoPin, INPUT);  
-pinMode(buzzer, OUTPUT);// put your setup code here, to run once:
+myservo.write(pos);// put your setup code here, to run once:
 
 }
 
@@ -44,10 +48,13 @@ if (distance <4)
  delay(4000);
  digitalWrite(yellowLed, LOW);
  delay(5000);
+ myservo.write(pos+90);
+ 
+ 
  digitalWrite(stationLed, HIGH);
- delay(5000)
+ delay(5000);
  digitalWrite(stationLed, LOW);
- delay(5000)
+ delay(5000);
 
 }
   
